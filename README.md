@@ -1,130 +1,115 @@
+# TaskFlowAi-Ethara-Ai-project-
+Full-stack project management app with JWT auth, role-based access control (Admin/Member), task assignment &amp; tracking, and 4 AI features (task decomposer, priority suggester, standup generator, risk analyzer) powered by Groq LLaMA 3.3 70B. Built with React 19, Node.js, MySQL.
+
 <div align="center">
 
-# 🚀 TaskFlow AI
-### *Intelligent Project & Task Management Platform*
+<img src="https://img.shields.io/badge/TaskFlow-AI-7c6df0?style=for-the-badge&logoColor=white" height="45"/>
 
-[![Node.js](https://img.shields.io/badge/Node.js-Express%205-339933?style=for-the-badge&logo=node.js)](https://nodejs.org)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)](https://mysql.com)
-[![Groq AI](https://img.shields.io/badge/Groq-LLaMA%203.3%2070B-F55036?style=for-the-badge)](https://groq.com)
-[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
-[![JWT](https://img.shields.io/badge/Auth-JWT%20%2B%20bcrypt-000000?style=for-the-badge&logo=jsonwebtokens)](https://jwt.io)
+### Full-Stack Project & Task Management — with Built-in AI Superpowers
 
-> A full-stack project management platform with role-based access control and **4 AI-powered features** — task decomposition, smart priority suggestions, automated standup generation, and real-time risk analysis — all powered by Groq's LLaMA 3.3 70B model.
+<br/>
+
+[![Node.js](https://img.shields.io/badge/Node.js-Express_5-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://mysql.com)
+[![Groq](https://img.shields.io/badge/Groq-LLaMA_3.3_70B-F55036?style=flat-square)](https://groq.com)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+[![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=flat-square&logo=jsonwebtokens)](https://jwt.io)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+<br/>
+
+**TaskFlow AI** is a full-stack team productivity platform where admins manage projects and teams, members track their tasks, and everyone gets AI-powered assistance — from breaking down goals into tasks, to generating daily standups automatically.
+
+[🚀 Quick Start](#-quick-start) · [🤖 AI Features](#-ai-features) · [📡 API Docs](#-api-reference) · [🔐 Demo Login](#-demo-accounts)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## 📸 What's Inside
 
-- [Live Demo Credentials](#-live-demo-credentials)
-- [Tech Stack](#-tech-stack)
-- [Key Features](#-key-features)
-- [AI Features (Deep Dive)](#-ai-features-deep-dive)
-- [Architecture & Database Design](#-architecture--database-design)
-- [REST API Reference](#-rest-api-reference)
-- [Role-Based Access Control](#-role-based-access-control)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
+| Page | What it does |
+|------|-------------|
+| **Dashboard** | KPI cards (projects, tasks, overdue), task distribution chart, recent activity feed — all role-scoped |
+| **Projects** | Create & manage projects with team members, deadlines, and live task progress |
+| **Project Detail** | All tasks for a project, member list, inline AI tools |
+| **Tasks** | Personal task view with status/priority filters |
+| **AI Assistant** | 4 AI tools — decompose goals, suggest priorities, write standups, analyze risks |
+| **Users** | Admin-only team directory |
 
 ---
 
-## 🔐 Live Demo Credentials
+## 🔐 Demo Accounts
 
-The database **auto-seeds on first startup** — no manual SQL import needed. Use these accounts instantly:
+> Database **auto-seeds on first startup** — no SQL import needed. Just run and log in.
 
-| Role | Email | Password | Access Level |
-|------|-------|----------|--------------|
-| **Admin** | `admin@taskflow.com` | `Password@123` | Full system access — all projects, all users, all tasks |
-| **Member** | `priya@taskflow.com` | `Password@123` | Own projects & assigned tasks only |
-| **Member** | `rahul@taskflow.com` | `Password@123` | Own projects & assigned tasks only |
-| **Member** | `sneha@taskflow.com` | `Password@123` | Own projects & assigned tasks only |
-| *(+4 more members)* | `arjun/kavya/dev/tanya @taskflow.com` | `Password@123` | Member access |
+| Role | Email | Password | What you can do |
+|------|-------|----------|----------------|
+| **Admin** | `admin@taskflow.com` | `Password@123` | Everything — all projects, all tasks, manage team |
+| **Member** | `priya@taskflow.com` | `Password@123` | Own projects + assigned tasks only |
+| **Member** | `rahul@taskflow.com` | `Password@123` | Own projects + assigned tasks only |
+| **Member** | `sneha@taskflow.com` | `Password@123` | Own projects + assigned tasks only |
+| **4 more members** | `arjun / kavya / dev / tanya @taskflow.com` | `Password@123` | Member access |
 
-> **Seeded with realistic data:** 6 projects, 8 team members, 70+ tasks across 5 status stages, with AI-suggested priorities already populated.
-
----
-
-## 🛠 Tech Stack
-
-### Backend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Node.js + Express 5** | `^5.2.1` | REST API server with async error handling |
-| **MySQL 2** | `^3.22.3` | Relational database with connection pooling (limit: 10) |
-| **JWT** | `^9.0.3` | Stateless authentication with 7-day token expiry |
-| **bcryptjs** | `^3.0.3` | Password hashing with salt rounds = 12 |
-| **Groq SDK** | `^1.1.2` | LLaMA 3.3 70B AI inference (ultra-fast, free tier) |
-| **Helmet** | `^8.1.0` | HTTP security headers (XSS, CSRF, clickjacking protection) |
-| **express-validator** | `^7.3.2` | Request body validation & sanitization |
-| **nodemon** | `^3.1.14` | Dev server with hot-reload |
-
-### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **React 19** | `^19.2.5` | UI with concurrent features |
-| **Vite 8** | `^8.0.10` | Lightning-fast dev server & build tool |
-| **React Router v7** | `^7.14.2` | Client-side routing with protected routes |
-| **TanStack Query v5** | `^5.100.6` | Server state management, caching & sync |
-| **Recharts** | `^3.8.1` | Dashboard bar charts & data visualization |
-| **Axios** | `^1.15.2` | HTTP client with centralized interceptors |
-| **Lucide React** | `^1.14.0` | Icon system |
-| **React Hot Toast** | `^2.6.0` | Toast notifications |
+Seeded with **6 real projects**, **8 team members**, and **70+ tasks** across all status stages.
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-### 🔑 Authentication & Security
-- **JWT-based auth** — tokens signed with HS256, expire in 7 days, stored client-side
-- **bcrypt password hashing** — salt rounds of 12 (industry standard for security vs. performance)
-- **Helmet middleware** — sets 11 security-related HTTP headers on every response
-- **CORS whitelisting** — only allows requests from configured `CLIENT_URL`
-- **Protected routes** — React-level guard via `ProtectedRoute` component + server-side JWT verification on every request
-- **Role enforcement** — admin-only routes return `403 Forbidden` to non-admin users at middleware level
+### 🔑 Authentication
+- JWT-based login & registration (7-day token expiry)
+- Passwords hashed with **bcrypt at salt rounds 12**
+- Duplicate email check returns `409 Conflict`
+- Random avatar color assigned on signup from a curated palette
+- Token verified on every protected request via `auth` middleware
 
-### 👥 User & Team Management
-- User registration with duplicate email check and random avatar color assignment from a curated palette
-- Role assignment at signup (`admin` or `member`) with server-side enforcement
-- Full user directory available for task assignment dropdowns
-- Admin-only `/users` page to view all team members and their roles
+### 👥 Role-Based Access Control
+Two roles, enforced at **both API middleware and SQL query level** — not just the frontend:
 
-### 📁 Project Management
-- **Admin** can create, update, and delete projects with name, description, deadline, and initial team members
-- **Members** see only projects they own or are invited to — enforced at SQL query level (not just frontend)
-- Project cards display live stats: total tasks, completed tasks, team member count
-- Add/remove team members from projects post-creation
-- Project status tracking: `active` / `completed` / `on_hold`
-- Deadline tracking with date display
+- **Admin** — full system access: create/delete projects, manage all tasks, view all users
+- **Member** — scoped access: only sees projects they own or are invited to, only their assigned/created tasks
+
+```
+Admin  → sees everything
+Member → sees only what belongs to them
+Unauthorized → 403 Forbidden at the route level, before any DB call
+```
+
+### 📁 Project & Team Management
+- Create projects with name, description, deadline, and initial members in one request
+- Add/remove members post-creation via dedicated endpoints
+- Project cards show **live stats** (total tasks, completed, team size) via SQL aggregation
+- Project statuses: `active` / `completed` / `on_hold`
 
 ### ✅ Task Management
-- Full CRUD on tasks with title, description, project assignment, assignee, status, priority, and due date
-- **5 task statuses:** `todo` → `in_progress` → `review` → `done` (+ `blocked`)
+- Full CRUD with title, description, project, assignee, due date
+- **5 status stages:** `todo` → `in_progress` → `review` → `done` → `blocked`
 - **4 priority levels:** `low` / `medium` / `high` / `critical`
-- `PATCH /tasks/:id/status` — lightweight endpoint for drag-and-drop style quick status updates without full PUT
-- **AI-suggested priority** stored as a separate field (`ai_suggested_priority`) alongside human-set priority for comparison
-- Filter tasks by `project_id`, `assigned_to`, or `status` via query params
-- Task comments system — threaded comments with user attribution and timestamps
+- `PATCH /tasks/:id/status` — lightweight endpoint for quick status updates without a full PUT
+- `ai_suggested_priority` stored as a **separate DB field** alongside human-set priority for comparison
+- Filter tasks by `project_id`, `assigned_to`, `status` via query params
+- Threaded **comments** per task with user attribution and timestamps
 
 ### 📊 Dashboard
-- **Role-aware stats:** admins see system-wide numbers; members see only their own data
-- Task distribution bar chart (Recharts) with color-coded status breakdown
-- KPI cards: Projects count, Total Tasks, In Progress, Overdue alerts
+- **Role-scoped KPIs** — admins see system-wide numbers; members see only their own data
+- Task distribution **bar chart** (Recharts) with color-coded status breakdown
+- **Overdue detection** via `WHERE due_date < CURDATE() AND status != 'done'` computed at query time
 - Recent activity feed — last 5 updated tasks with assignee and project context
-- Overdue detection via SQL `CURDATE()` comparison at query time
 
 ---
 
-## 🤖 AI Features (Deep Dive)
+## 🤖 AI Features
 
-All AI features use **Groq's LLaMA 3.3 70B Versatile** model with structured JSON output mode for reliable parsing. Zero hallucination risk on structured responses — the model is prompted to return only valid JSON with no markdown or explanation.
+All 4 AI features use **Groq's LLaMA 3.3 70B Versatile** with JSON output mode — structured, parseable responses every single time. No markdown, no hallucinated formats.
 
-### 1. 🧩 Task Decomposer
-**Endpoint:** `POST /api/ai/decompose`
+<details>
+<summary><strong>🧩 Task Decomposer</strong> — Break a project goal into actionable tasks</summary>
 
-Takes a high-level project goal and breaks it into 3–6 specific, actionable tasks.
+**`POST /api/ai/decompose`**
+
+Input a high-level goal, get back 3–6 specific tasks with priorities and time estimates ready to import into the project.
 
 ```json
 // Request
@@ -134,18 +119,19 @@ Takes a high-level project goal and breaks it into 3–6 specific, actionable ta
 {
   "tasks": [
     { "title": "Design JWT auth flow", "description": "...", "priority": "high", "estimated_days": 2 },
-    { "title": "Implement bcrypt password hashing", "description": "...", "priority": "critical", "estimated_days": 1 }
+    { "title": "Implement password hashing", "description": "...", "priority": "critical", "estimated_days": 1 },
+    { "title": "Build login & register endpoints", "description": "...", "priority": "high", "estimated_days": 2 }
   ]
 }
 ```
-> **Use case:** PM enters a sprint goal → AI generates a structured task list that can be imported directly into the project.
+</details>
 
----
+<details>
+<summary><strong>🎯 Priority Suggester</strong> — AI-recommended priority based on context & deadline proximity</summary>
 
-### 2. 🎯 Priority Suggester
-**Endpoint:** `POST /api/ai/suggest-priority`
+**`POST /api/ai/suggest-priority`**
 
-Analyzes task title, description, and deadline proximity to suggest an appropriate priority level with a concise reason.
+Automatically calculates `days_until_due` before the API call — the model receives concrete numbers, not raw dates, improving accuracy.
 
 ```json
 // Request
@@ -154,14 +140,14 @@ Analyzes task title, description, and deadline proximity to suggest an appropria
 // Response
 { "priority": "critical", "reason": "Revenue-blocking bug with deadline in 3 days" }
 ```
-> **Implementation detail:** Automatically calculates `days_until_due` from the due date before sending to AI — the model receives concrete numbers, not raw dates, improving accuracy.
+</details>
 
----
+<details>
+<summary><strong>📢 Standup Generator</strong> — Auto-write your daily standup in seconds</summary>
 
-### 3. 📢 Standup Generator
-**Endpoint:** `POST /api/ai/standup`
+**`POST /api/ai/standup`**
 
-Fetches the last 20 tasks for a project from the database, formats them with status/priority/assignee data, and generates a concise daily standup in 150 words or less.
+Fetches the last 20 tasks from the DB with status/priority/assignee data, generates a standup in ≤150 words. Paste directly into Slack.
 
 ```json
 // Request
@@ -169,17 +155,17 @@ Fetches the last 20 tasks for a project from the database, formats them with sta
 
 // Response
 {
-  "standup": "**Done:** Homepage hero redesign, Algolia search integration.\n**In Progress:** Cart checkout flow (Rahul, 3 days left), Razorpay integration (Priya).\n**Blockers:** Variant management blocked on API spec from backend team. Core Web Vitals still at LCP 3.1s — needs CDN config."
+  "standup": "Done: Homepage redesign, Algolia search integration.\nIn Progress: Cart checkout (Rahul, 3 days left), Razorpay integration (Priya).\nBlockers: Variant management blocked on API spec. Core Web Vitals still at LCP 3.1s — needs CDN config."
 }
 ```
-> **Use case:** Auto-generate the daily standup message to paste into Slack — saves 5 minutes every morning.
+</details>
 
----
+<details>
+<summary><strong>⚠️ Risk Analyzer</strong> — Spot project health issues before they escalate</summary>
 
-### 4. ⚠️ Risk Analyzer
-**Endpoint:** `POST /api/ai/analyze-risks`
+**`POST /api/ai/analyze-risks`**
 
-Pulls all tasks for a project including an `is_overdue` flag computed in SQL (`CASE WHEN due_date < CURDATE() AND status != 'done' THEN 1 ELSE 0 END`), then returns a structured risk assessment.
+Pulls all tasks with an `is_overdue` flag computed in SQL (`CASE WHEN due_date < CURDATE() AND status != 'done'`), returns a structured risk report.
 
 ```json
 // Request
@@ -189,206 +175,106 @@ Pulls all tasks for a project including an `is_overdue` flag computed in SQL (`C
 {
   "risk_level": "high",
   "risks": [
-    "3 critical tasks are overdue with no assignee",
-    "DevOps migration deadline is 9 days away with 40% completion",
-    "Single point of failure — only 1 developer on Kubernetes migration"
+    "3 critical tasks overdue with no assignee",
+    "Deadline in 9 days with only 40% completion",
+    "Single developer on the Kubernetes migration"
   ],
   "recommendations": [
     "Reassign overdue tasks immediately",
-    "Schedule emergency sync with stakeholders about timeline",
-    "Bring in a second DevOps engineer for the migration"
+    "Schedule emergency stakeholder sync",
+    "Bring in a second DevOps engineer"
   ]
 }
 ```
+</details>
 
 ---
 
-## 🗄 Architecture & Database Design
+## 🛠 Tech Stack
 
-### Database Schema
+| Layer | Technology | Version |
+|-------|-----------|---------|
+| **Frontend** | React, Vite, React Router, TanStack Query, Recharts, Axios, Lucide React, React Hot Toast | React 19 / Vite 8 |
+| **Backend** | Node.js, Express, MySQL2 (connection pool) | Express 5 |
+| **Auth** | JSON Web Tokens, bcryptjs (rounds: 12) | JWT 9 |
+| **AI** | Groq SDK → LLaMA 3.3 70B Versatile (JSON mode) | groq-sdk 1.1 |
+| **Security** | Helmet, CORS whitelist, express-validator | Helmet 8 |
+| **Dev** | Nodemon, ESLint, Vite HMR | — |
+
+---
+
+## 🗄 Database Schema
 
 ```sql
--- Users: role-based with avatar theming
-users (id, name, email, password, role ENUM('admin','member'), avatar_color, created_at)
-
--- Projects: owned by a user, status-tracked
-projects (id, name, description, owner_id → users, status ENUM('active','completed','on_hold'), deadline, created_at)
-
--- Many-to-many: project team membership
-project_members (project_id → projects, user_id → users)  -- composite PK, INSERT IGNORE prevents duplicates
-
--- Tasks: fully relational with AI field
-tasks (id, title, description, project_id → projects, assigned_to → users,
-       created_by → users, status ENUM('todo','in_progress','review','done','blocked'),
-       priority ENUM('low','medium','high','critical'), due_date,
-       ai_suggested_priority, created_at, updated_at)
-
--- Comments: threaded on tasks
-comments (id, task_id → tasks, user_id → users, content, created_at)
+users           (id, name, email, password, role ENUM('admin','member'), avatar_color, created_at)
+projects        (id, name, description, owner_id → users, status, deadline, created_at)
+project_members (project_id → projects, user_id → users)   ← composite PK
+tasks           (id, title, description, project_id, assigned_to, created_by,
+                 status, priority, due_date, ai_suggested_priority, created_at, updated_at)
+comments        (id, task_id → tasks, user_id → users, content, created_at)
 ```
 
-### Key Design Decisions
-- **`ai_suggested_priority` column** stored separately from `priority` — lets you compare what humans set vs. what AI recommended, great for analytics
-- **`INSERT IGNORE` on project_members** — idempotent membership, no duplicate member errors
-- **Connection pooling** — MySQL pool with `connectionLimit: 10` and `waitForConnections: true` for production-ready concurrency
-- **Auto-seeder** — `seeder.js` runs on every server startup but checks if `admin@taskflow.com` exists first — completely idempotent, safe to run forever
-
-### API Architecture
-
-```
-Express App
-├── Helmet (security headers)
-├── CORS (whitelisted origins)
-├── express.json() (body parsing)
-│
-├── /api/auth     → Registration, Login, /me (JWT-protected)
-├── /api/projects → CRUD + member management (admin-gated creates/deletes)
-├── /api/tasks    → CRUD + status patch + comments
-├── /api/users    → User list + dashboard stats
-├── /api/ai       → 4 AI endpoints (all JWT-protected)
-└── /api/health   → Health check
-```
+**Design decisions worth noting:**
+- `ai_suggested_priority` lives in its own column — track AI recommendations vs. human decisions independently
+- `INSERT IGNORE` on `project_members` — idempotent membership, zero duplicate-entry errors
+- `ON DELETE CASCADE` on tasks and comments — referential integrity maintained automatically
+- MySQL connection pool `limit: 10`, `waitForConnections: true` — concurrent requests handled cleanly
 
 ---
 
-## 📡 REST API Reference
+## 📡 API Reference
 
-### Auth Routes
+### Auth
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| `POST` | `/api/auth/register` | ❌ | Register new user, returns JWT |
-| `POST` | `/api/auth/login` | ❌ | Login, returns JWT + user object |
+| `POST` | `/api/auth/register` | — | Register → returns JWT |
+| `POST` | `/api/auth/login` | — | Login → returns JWT + user |
 | `GET` | `/api/auth/me` | ✅ | Get current user from token |
 
-### Project Routes
-| Method | Endpoint | Auth | Role | Description |
-|--------|----------|------|------|-------------|
-| `GET` | `/api/projects` | ✅ | Any | List projects (scoped by role) |
-| `POST` | `/api/projects` | ✅ | Admin | Create project + add members |
-| `GET` | `/api/projects/:id` | ✅ | Any | Project detail + members list |
-| `PUT` | `/api/projects/:id` | ✅ | Admin | Update project |
-| `DELETE` | `/api/projects/:id` | ✅ | Admin | Delete project |
-| `POST` | `/api/projects/:id/members` | ✅ | Admin | Add team member |
-| `DELETE` | `/api/projects/:id/members/:userId` | ✅ | Admin | Remove team member |
-
-### Task Routes
-| Method | Endpoint | Auth | Description |
+### Projects
+| Method | Endpoint | Role | Description |
 |--------|----------|------|-------------|
-| `GET` | `/api/tasks?project_id=&assigned_to=&status=` | ✅ | Filtered task list |
-| `POST` | `/api/tasks` | ✅ | Create task (supports `ai_suggested_priority`) |
-| `PUT` | `/api/tasks/:id` | ✅ | Full task update |
-| `PATCH` | `/api/tasks/:id/status` | ✅ | Quick status-only update |
-| `DELETE` | `/api/tasks/:id` | ✅ | Delete task |
-| `GET` | `/api/tasks/:id/comments` | ✅ | Get task comments |
-| `POST` | `/api/tasks/:id/comments` | ✅ | Add comment |
+| `GET` | `/api/projects` | Any | List (scoped by role) |
+| `POST` | `/api/projects` | Admin | Create with members |
+| `GET` | `/api/projects/:id` | Any | Detail + members |
+| `PUT` | `/api/projects/:id` | Admin | Update |
+| `DELETE` | `/api/projects/:id` | Admin | Delete |
+| `POST` | `/api/projects/:id/members` | Admin | Add member |
+| `DELETE` | `/api/projects/:id/members/:uid` | Admin | Remove member |
 
-### AI Routes
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `POST` | `/api/ai/decompose` | ✅ | Break goal into tasks |
-| `POST` | `/api/ai/suggest-priority` | ✅ | Get AI priority for a task |
-| `POST` | `/api/ai/standup` | ✅ | Generate daily standup |
-| `POST` | `/api/ai/analyze-risks` | ✅ | Project risk analysis |
+### Tasks
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/tasks` | Filter by `?project_id= &assigned_to= &status=` |
+| `POST` | `/api/tasks` | Create task |
+| `PUT` | `/api/tasks/:id` | Full update |
+| `PATCH` | `/api/tasks/:id/status` | Quick status-only update |
+| `DELETE` | `/api/tasks/:id` | Delete |
+| `GET` | `/api/tasks/:id/comments` | Get comments |
+| `POST` | `/api/tasks/:id/comments` | Add comment |
 
-### User Routes
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `GET` | `/api/users` | ✅ | All users (for assignment dropdowns) |
-| `GET` | `/api/users/stats/dashboard` | ✅ | Dashboard KPIs (role-scoped) |
+### AI
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/ai/decompose` | Goal → task list |
+| `POST` | `/api/ai/suggest-priority` | Task details → priority + reason |
+| `POST` | `/api/ai/standup` | Project ID → standup text |
+| `POST` | `/api/ai/analyze-risks` | Project ID → risk report |
+
+### Users
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/users` | All users (for dropdowns) |
+| `GET` | `/api/users/stats/dashboard` | KPI stats (role-scoped) |
 
 ---
 
-## 🔒 Role-Based Access Control
-
-Two middleware functions enforce RBAC at the route level:
-
-```javascript
-// Blocks non-admins from admin-only routes
-const requireAdmin = (req, res, next) => {
-  if (req.user.role !== 'admin') return res.status(403).json({ error: 'Admin access required' });
-  next();
-};
-
-// Verifies user is a member of the project (or admin)
-const requireProjectAccess = async (req, res, next) => {
-  const [rows] = await pool.query(
-    `SELECT pm.* FROM project_members pm WHERE pm.project_id = ? AND pm.user_id = ?
-     UNION
-     SELECT p.id, p.owner_id, p.owner_id FROM projects p WHERE p.id = ? AND p.owner_id = ?`,
-    [projectId, req.user.id, projectId, req.user.id]
-  );
-  if (!rows.length && req.user.role !== 'admin') return res.status(403).json({ error: 'No access to this project' });
-  next();
-};
-```
-
-| Action | Admin | Member (Project) | Member (Non-Project) |
-|--------|-------|-----------------|---------------------|
-| View all projects | ✅ | ❌ (own only) | ❌ |
-| Create/delete projects | ✅ | ❌ | ❌ |
-| Manage team members | ✅ | ❌ | ❌ |
-| View all tasks | ✅ | ❌ (assigned/created) | ❌ |
-| Create tasks | ✅ | ✅ | ❌ |
-| Update task status | ✅ | ✅ | ❌ |
-| Access /users page | ✅ | ❌ (redirected) | ❌ |
-| AI features | ✅ | ✅ | ❌ |
-
----
-
-## 🗂 Project Structure
-
-```
-taskflow-ai/
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   │   ├── db.js           # MySQL connection pool
-│   │   │   └── seeder.js       # Auto-seeder (idempotent, runs on startup)
-│   │   ├── middleware/
-│   │   │   ├── auth.js         # JWT verification middleware
-│   │   │   └── role.js         # requireAdmin + requireProjectAccess
-│   │   ├── routes/
-│   │   │   ├── auth.js         # Register, Login, /me
-│   │   │   ├── projects.js     # Project CRUD + member management
-│   │   │   ├── tasks.js        # Task CRUD + comments
-│   │   │   ├── users.js        # User list + dashboard stats
-│   │   │   └── ai.js           # 4 AI endpoints (Groq/LLaMA)
-│   │   └── server.js           # Express app entry point
-│   ├── .env                    # Environment config
-│   └── package.json
-│
-├── frontend/
-│   ├── src/
-│   │   ├── api/
-│   │   │   └── axios.js        # Axios instance with auth interceptors
-│   │   ├── components/
-│   │   │   └── Layout.jsx      # Sidebar navigation + layout shell
-│   │   ├── context/
-│   │   │   └── AuthContext.jsx # Global auth state (user, token, isAdmin)
-│   │   ├── pages/
-│   │   │   ├── Login.jsx       # Login form
-│   │   │   ├── Register.jsx    # Registration form
-│   │   │   ├── Dashboard.jsx   # KPIs + task chart + recent activity
-│   │   │   ├── Projects.jsx    # Project list + create modal
-│   │   │   ├── ProjectDetail.jsx # Single project + tasks + AI tools
-│   │   │   ├── Tasks.jsx       # My tasks view with filters
-│   │   │   ├── Users.jsx       # Admin user directory
-│   │   │   └── AIAssistant.jsx # AI feature hub
-│   │   ├── App.jsx             # Placeholder (routing in main.jsx)
-│   │   └── main.jsx            # Router + ProtectedRoute + AuthProvider
-│   └── package.json
-│
-└── seed.sql                    # Optional: manual SQL seed (auto-seeder preferred)
-```
-
----
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+
 - MySQL 8.0+
-- A [Groq API key](https://console.groq.com) (free, no credit card)
+- Free [Groq API key](https://console.groq.com) — takes 30 seconds, no credit card
 
 ### 1. Clone & Install
 
@@ -396,10 +282,7 @@ taskflow-ai/
 git clone https://github.com/yourusername/taskflow-ai.git
 cd taskflow-ai
 
-# Install backend dependencies
-cd backend && npm install
-
-# Install frontend dependencies
+cd backend   && npm install
 cd ../frontend && npm install
 ```
 
@@ -409,13 +292,11 @@ cd ../frontend && npm install
 -- In MySQL shell or Workbench
 CREATE DATABASE task_manager;
 USE task_manager;
-
--- Run the schema (create tables first)
--- Tables: users, projects, project_members, tasks, comments
+-- Then paste and run the schema from the collapsible below
 ```
 
 <details>
-<summary><strong>📄 Click to expand full CREATE TABLE schema</strong></summary>
+<summary>📄 Full CREATE TABLE schema (5 tables)</summary>
 
 ```sql
 CREATE TABLE users (
@@ -479,66 +360,98 @@ CREATE TABLE comments (
 
 ### 3. Configure Environment
 
-```bash
-# backend/.env
+Create `backend/.env`:
+
+```env
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_mysql_password
 DB_NAME=task_manager
-JWT_SECRET=your_super_secret_jwt_key_here
+JWT_SECRET=your_64_char_random_string_here
 JWT_EXPIRES_IN=7d
-GROQ_API_KEY=your_groq_api_key_here
+GROQ_API_KEY=gsk_your_groq_key_here
 CLIENT_URL=http://localhost:5173
 ```
 
-### 4. Start the Servers
+### 4. Run Both Servers
 
 ```bash
-# Terminal 1 — Backend (auto-seeds database on first run)
+# Terminal 1 — Backend
 cd backend && npm run dev
-# → Server running on port 5000
-# → 🌱 Seeding database with demo data...
-# → ✅ All seed data inserted successfully!
+# 🚀 Server running on port 5000
+# 🌱 Seeding database with demo data...
+# ✅ All seed data inserted successfully!
 
 # Terminal 2 — Frontend
 cd frontend && npm run dev
-# → Local: http://localhost:5173
+# ➜ Local: http://localhost:5173
 ```
 
-### 5. Login & Explore
-
-Open `http://localhost:5173` and use the credentials from the [demo accounts table](#-live-demo-credentials) above.
-
-**Suggested exploration path:**
-1. Login as **Admin** → View full dashboard with all 70+ tasks
-2. Navigate to **Projects** → Open "E-Commerce Revamp"
-3. Try **AI Assistant** → Decompose a new project goal into tasks
-4. Logout → Login as **Member (priya@taskflow.com)** → Notice data is scoped to assigned tasks only
-5. Try accessing `/users` as a member → Redirected (RBAC in action)
+Open `http://localhost:5173` → log in with any account from the table above → everything is ready.
 
 ---
 
-## ⚙️ Environment Variables
+## 🗂 Project Structure
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `PORT` | ✅ | Backend server port (default: 5000) |
-| `DB_HOST` | ✅ | MySQL host |
-| `DB_USER` | ✅ | MySQL user |
-| `DB_PASSWORD` | ✅ | MySQL password |
-| `DB_NAME` | ✅ | Database name (create manually) |
-| `JWT_SECRET` | ✅ | Secret for signing JWT tokens (use 64+ char random string) |
-| `JWT_EXPIRES_IN` | ✅ | Token expiry (e.g., `7d`, `24h`) |
-| `GROQ_API_KEY` | ✅ | API key from [console.groq.com](https://console.groq.com) (free) |
-| `CLIENT_URL` | ✅ | Frontend URL for CORS whitelist |
+```
+taskflow-ai/
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   │   ├── db.js           # MySQL pool (limit: 10, waitForConnections: true)
+│   │   │   └── seeder.js       # Idempotent auto-seeder — runs on startup, skips if seeded
+│   │   ├── middleware/
+│   │   │   ├── auth.js         # JWT verification → attaches req.user
+│   │   │   └── role.js         # requireAdmin + requireProjectAccess
+│   │   ├── routes/
+│   │   │   ├── auth.js         # Register, Login, /me
+│   │   │   ├── projects.js     # CRUD + team management
+│   │   │   ├── tasks.js        # CRUD + PATCH status + comments
+│   │   │   ├── users.js        # User list + dashboard stats
+│   │   │   └── ai.js           # 4 Groq/LLaMA endpoints
+│   │   └── server.js           # Helmet, CORS, routes, error handler
+│   └── .env
+│
+└── frontend/
+    └── src/
+        ├── api/axios.js            # Axios instance + auth interceptor
+        ├── context/AuthContext.jsx # Global auth state (user, token, isAdmin)
+        ├── components/Layout.jsx   # Sidebar nav shell
+        └── pages/
+            ├── Dashboard.jsx       # KPI cards + Recharts + activity feed
+            ├── Projects.jsx        # Project list + create modal
+            ├── ProjectDetail.jsx   # Tasks + members + AI tools
+            ├── Tasks.jsx           # My tasks with filters
+            ├── AIAssistant.jsx     # AI feature hub
+            ├── Users.jsx           # Admin directory
+            ├── Login.jsx
+            └── Register.jsx
+```
+
+---
+
+## 🔒 Security
+
+- **Helmet** — 11 HTTP security headers set on every response (XSS, clickjacking, MIME sniffing, etc.)
+- **CORS whitelist** — only `CLIENT_URL` and `localhost:5173` accepted
+- **bcrypt salt rounds = 12** — production-grade, not the default 10
+- **SQL-level data scoping** — members cannot retrieve other users' data via direct API calls; the WHERE clause excludes unauthorized rows at the database layer, not just the frontend
+- **Correct HTTP status codes** — `400` bad input · `401` unauthenticated · `403` wrong role · `404` not found · `409` conflict
+- **Global error handler** — unhandled errors return clean JSON, never stack traces
+
+---
+
+## 📄 License
+
+[MIT](LICENSE) — free to use, fork, and build on.
 
 ---
 
 <div align="center">
 
-Built with ❤️ using **Node.js · React · MySQL · Groq AI**
+Made with **Node.js · React · MySQL · Groq AI**
 
-*Every feature production-tested. Every route secured. Every AI response structured.*
+⭐ **Star this repo** if it helped you or saved you time
 
 </div>
