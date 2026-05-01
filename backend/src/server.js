@@ -7,7 +7,14 @@ const runSeed = require('./config/seeder');
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: [process.env.CLIENT_URL, 'http://localhost:5173'], credentials: true }));
+app.use(cors({
+  origin: [
+    'https://task-flow-ai-ethara-ai-project.vercel.app',
+    'http://localhost:5173',
+    process.env.CLIENT_URL
+  ].filter(Boolean),
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
@@ -27,5 +34,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  await runSeed(); // ← auto-seeds on every startup, skips if data exists
+  await runSeed();
 });
