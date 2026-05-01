@@ -8,12 +8,8 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({
-  origin: [
-    'https://task-flow-ai-ethara-ai-project.vercel.app',
-    'http://localhost:5173',
-    process.env.CLIENT_URL
-  ].filter(Boolean),
-  credentials: true
+  origin: '*',
+  credentials: false
 }));
 app.use(express.json());
 
